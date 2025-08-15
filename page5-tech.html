@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technology Convenience</title>
+    <link rel="stylesheet" href="css/page5-tech.css">
+
+</head>
+<body>
+         <audio id="clickSound">
+        <source src="video/mouse-click.mp3" type="audio/mpeg">
+    </audio>
+    <img src="img/fast-life.png" alt="Fast-paced city life" class="background-image">
+    <div class="overlay"></div>
+    
+    <div class="content">
+        <h1>Technology Convenience</h1>
+        
+        <div class="story-text">
+            <p>Emma continued to use HeatTile every day.</p>
+            <p>Meals were always warm, quick, and easy.</p>
+            <p>But sometimes, in the middle of a busy lunch, she wondered about the laughter, the smells, and the stories that once filled her family's table.</p>
+        </div>
+        
+        <button class="restart-btn" onclick="restartStory()">Restart Story</button>
+    </div>
+
+    <script>
+         function playClickSound() {
+            clickSound.currentTime = 0; 
+            clickSound.play().catch(e => console.log("Click sound error:", e));
+        }
+        function restartStory() {
+             playClickSound();
+             setTimeout(() => {
+
+              
+            window.location.href = "index.html";
+            }, 200);
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Talk</title>
+    <link rel="stylesheet" href="css/page3.css">
+</head>
+<body>
+    <video autoplay muted loop id="video-background">
+        <source src="video/3.mp4" type="video/mp4">
+    </video>
+       <audio id="clickSound">
+        <source src="video/mouse-click.mp3" type="audio/mpeg">
+    </audio>
+    <div class="dialogue-box">
+        <div class="dialogue-text" id="dialogue-text"></div>
+        <button class="next-btn" id="next-btn" onclick="nextDialogue()">continue</button>
+    </div>
+    
+    <button class="continue-btn" id="continue-btn" onclick="nextPage()">continue story</button>
+
+    <script>
+        const dialogues = [
+            { speaker: "Grandma", text: "Emma, this HeatTile is really convenient." },
+            { speaker: "Emma (You)", text: "Yes, Grandma. It keeps my lunch warm even during class." },
+            { speaker: "Grandma", text: " But… we haven’t cooked and eaten together as a family for so long, don’t you think?" },
+            { speaker: "Emma (You)", text: " …I never really thought about it." },
+            { speaker: "Grandma", text: "Eating together is not just about filling your stomach. It’s about talking, sharing, and being there for each other." },
+            { speaker: "Emma (You)", text: "I understand, Grandma." },
+            { speaker: "Grandma", text: " Promise me you’ll never forget the warmth of a real family meal." },
+            { speaker: "Emma (You)", text: "I promise." }
+        ];
+        
+        let currentDialogue = 0;
+        const dialogueText = document.getElementById('dialogue-text');
+        const nextBtn = document.getElementById('next-btn');
+        const continueBtn = document.getElementById('continue-btn');
+        
+        function showDialogue() {
+            const dialogue = dialogues[currentDialogue];
+            dialogueText.innerHTML = `<strong>${dialogue.speaker}:</strong> ${dialogue.text}`;
+            
+            if (currentDialogue === dialogues.length - 1) {
+                nextBtn.style.display = 'none';
+                continueBtn.style.display = 'block';
+            }
+        }
+        function playClickSound() {
+            clickSound.currentTime = 0; 
+            clickSound.play().catch(e => console.log("Click sound error:", e));
+        }
+        function nextDialogue() {
+            playClickSound();
+            currentDialogue++;
+            showDialogue();
+        }
+        
+        function nextPage() {
+            playClickSound();
+             setTimeout(() => {
+
+              
+            window.location.href = "page4.html";
+            }, 200);
+           
+
+        }
+        
+
+        showDialogue();
+    </script>
+</body>
+</html>

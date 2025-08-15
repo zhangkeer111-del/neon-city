@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canteen scene</title>
+    <link rel="stylesheet" href="css/page2.css">
+</head>
+<body>
+    <video autoplay muted loop id="video-background">
+        <source src="video/2.mp4" type="video/mp4">
+    </video>
+      <audio id="clickSound">
+        <source src="video/mouse-click.mp3" type="audio/mpeg">
+    </audio>
+    <img src="img/heattile.png" class="heat-tile" alt="HeatTile" onclick="showCard()">
+    
+    <div class="dialogue">
+        <div class="scrolling-container">
+            <div class="scrolling-text">I just need to gently stick it on, and after 30 seconds, the aroma of rice will waft out.</div>
+        </div>
+        <button class="next-btn" onclick="nextPage()">continue</button>
+    </div>
+
+    <div id="card" style="display:none;">
+        <div class="card-content">
+            <img src="img/heat-tile-product.jpg" alt="HeatTile Product" class="product-image">
+            
+            <h3 class="product-title">HeatTile Portable Heating Patch</h3>
+
+            <p class="product-desc">
+                A portable heating patch that gently sticks to your lunch box, heating meals to a comfortable temperature within 30 seconds. 
+                Safe, lightweight and environmentally friendly - the "mobile microwave oven" for students and busy professionals.
+            </p>
+            
+
+            <div class="content-section">
+                <h4 class="section-title">Working Principle</h4>
+                <p class="product-desc" style="text-align: left;">
+                    HeatTile has three layers: nano-heating layer, intelligent temperature control layer, and eco-friendly temperature-sensing film. 
+                    When it senses a metal lunch box, it activates automatically, heating via wireless power while maintaining a safe temperature (~65°C).
+                </p>
+            </div>
+            
+            <div class="content-section">
+                <h4 class="section-title">How To Use</h4>
+                <ol style="color: #34495e; line-height: 1.6; padding-left: 20px;">
+                    <li style="margin-bottom: 8px;">Stick HeatTile at the bottom of your lunch box</li>
+                    <li style="margin-bottom: 8px;">Wait about 30 seconds</li>
+                    <li>Enjoy your hot meal</li>
+                </ol>
+            </div>
+            
+            <div class="content-section">
+                <h4 class="section-title">Key Features</h4>
+                <ul style="color: #34495e; line-height: 1.6; padding-left: 20px;">
+                    <li style="margin-bottom: 8px;">Three temperature settings (50°C / 65°C / 80°C)</li>
+                    <li style="margin-bottom: 8px;">App control with remote start and timer</li>
+                    <li>Auto shut-off safety protection</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="close-btn-container">
+            <button class="close-btn" onclick=" Close()">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <script>
+         function playClickSound() {
+            clickSound.currentTime = 0; 
+            clickSound.play().catch(e => console.log("Click sound error:", e));
+        }
+        
+        function showCard() {
+            playClickSound();
+            document.getElementById('card').style.display = 'flex';
+
+            restartAnimation();
+        }
+        
+        function nextPage() {
+            playClickSound();
+             setTimeout(() => {
+
+              
+                window.location.href = "page3.html";
+            }, 200);
+           
+        }
+         function Close() {
+            playClickSound();
+             setTimeout(() => {
+
+              
+                document.getElementById('card').style.display='none';
+            }, 200);
+           
+        }
+        
+        function restartAnimation() {
+            
+            const textElement = document.querySelector('.scrolling-text');
+            textElement.style.animation = 'none';
+            void textElement.offsetWidth; 
+            textElement.style.animation = 'scrollText 12s linear infinite';
+        }
+    </script>
+</body>
+</html>

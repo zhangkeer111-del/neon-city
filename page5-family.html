@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Warmth</title>
+    <link rel="stylesheet" href="css/page5-family.css">
+
+</head>
+<body>
+           <audio id="clickSound">
+        <source src="video/mouse-click.mp3" type="audio/mpeg">
+    </audio>
+    <img src="img/family-meal.jpg" alt="Family dinner with warm lighting" class="background-image">
+    <div class="overlay"></div>
+    
+    <div class="content">
+        <h1>Family Warmth</h1>
+        
+        <div class="story-text">
+            <p>Emma decided to spend more evenings at home.</p>
+            <p>They cooked together, shared stories, and filled the kitchen with warmth.</p>
+            <p>HeatTile was still there, but now it was only a helper, not the heart of the meal.</p>
+        </div>
+        
+        <button class="restart-btn" onclick="restartStory()">Restart Story</button>
+    </div>
+
+    <script>
+           function playClickSound() {
+            clickSound.currentTime = 0; 
+            clickSound.play().catch(e => console.log("Click sound error:", e));
+        }
+        function restartStory() {
+             playClickSound();
+             setTimeout(() => {
+
+              
+            window.location.href = "index.html";
+            }, 200);
+
+        }
+    </script>
+</body>
+</html>

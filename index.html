@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon City·2300-The era of hot stickers</title>
+    <link rel="stylesheet" href="css/index.css">
+
+</head>
+<body>
+    <video autoplay muted loop id="video-background">
+        <source src="video/1.mp4" type="video/mp4">
+    </video>
+    
+    <audio id="bgMusic" loop>
+        <source src="video/background.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="clickSound">
+        <source src="video/mouse-click.mp3" type="audio/mpeg">
+    </audio>
+    
+
+    <button id="musicToggle" class="music-control">🔇</button>
+    
+    <h1 class="title">Neon City·2300<br>The era of hot stickers</h1>
+    <button class="start-btn" id="storyButton">Enter the story</button>
+
+    <script>
+        const bgMusic = document.getElementById('bgMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        const storyButton = document.getElementById('storyButton');
+        const clickSound = document.getElementById('clickSound');
+
+        bgMusic.volume = 0.5; 
+        clickSound.volume = 0.7;  
+
+        let musicPlaying = false;
+        
+      
+        function playClickSound() {
+            clickSound.currentTime = 0; 
+            clickSound.play().catch(e => console.log("Click sound error:", e));
+        }
+        
+
+        document.addEventListener('DOMContentLoaded', function() {
+            bgMusic.play()
+                .then(() => {
+                    musicPlaying = true;
+                    musicToggle.textContent = '🔊';
+                })
+                .catch(error => {
+                    console.log("Autoplay blocked:", error);
+                    musicToggle.textContent = '🔇';
+                });
+        });
+
+        musicToggle.addEventListener('click', function() {
+     
+            
+            if (musicPlaying) {
+                bgMusic.pause();
+                musicToggle.textContent = '🔇';
+            } else {
+                bgMusic.play()
+                    .then(() => {
+                        musicToggle.textContent = '🔊';
+                    })
+                    .catch(error => {
+                        alert('Please interact with the page first to enable audio');
+                    });
+            }
+            musicPlaying = !musicPlaying;
+        });
+        
+
+        storyButton.addEventListener('click', function() {
+            playClickSound(); 
+            
+       
+            setTimeout(() => {
+
+                if (musicPlaying) {
+                    bgMusic.play().catch(e => console.log(e));
+                }
+                window.location.href = "page2.html";
+            }, 200);
+        });
+    </script>
+</body>
+</html>

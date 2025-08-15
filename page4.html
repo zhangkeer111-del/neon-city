@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emma's Choice</title>
+    <link rel="stylesheet" href="css/page4.css">
+</head>
+<body>
+           <audio id="clickSound">
+        <source src="video/mouse-click.mp3" type="audio/mpeg">
+    </audio>
+    <img src="img/family-table.jpg" alt="Choice between technology and family" class="background-image">
+    <div class="overlay"></div>
+    
+    <div class="content">
+        <h1>Emma's Choice</h1>
+        
+        <div class="story-text">
+            <p>After talking with Grandma, Emma started thinking about her daily routine.</p>
+            <p>Should she keep using HeatTile every day for convenience, or try to spend more time having real family meals?</p>
+        </div>
+        
+        <div class="options">
+            <button id="tech-option" class="option-btn" onclick="chooseOption(1)">Keep using HeatTile every day</button>
+            <button id="family-option" class="option-btn" onclick="chooseOption(2)">Cook and eat with family</button>
+        </div>
+    </div>
+
+    <script>
+          function playClickSound() {
+            clickSound.currentTime = 0; 
+            clickSound.play().catch(e => console.log("Click sound error:", e));
+        }
+        function chooseOption(option) {
+               playClickSound();
+        setTimeout(() => {  
+            if (option === 1) {
+                window.location.href = "page5-tech.html";
+            } else {
+                window.location.href = "page5-family.html";
+            }
+
+            }, 200);
+            
+        }
+    </script>
+</body>
+</html>
